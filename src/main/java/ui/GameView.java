@@ -12,9 +12,9 @@ public class GameView {
     private final int ROWS = 3;
     private final int COLS = 3;
     private final JPanel panel = new JPanel(new GridLayout(ROWS, COLS, 0, 0));
-    private ArrayList<Button> buttons = new ArrayList<>(ROWS * COLS);
+    private final ArrayList<Button> buttons = new ArrayList<>(ROWS * COLS);
 
-    private String[] players = new String[2];
+    private final String[] players = new String[2];
 
 
     private final Titlebar titlebar;
@@ -63,8 +63,8 @@ public class GameView {
                 int col = ((Button)e.getSource()).col;
 
                 switch (tictactoeGame.move(row, col)) {
-                    case SUCCESS -> {button.setText(text);}
-                    case CELL_OCCUPIED -> {JOptionPane.showMessageDialog(null, "Cell is already occupied!!!");}
+                    case SUCCESS -> button.setText(text);
+                    case CELL_OCCUPIED -> JOptionPane.showMessageDialog(null, "Cell is already occupied!!!");
                     case DRAW -> {
                         button.setText(text);
                         JOptionPane.showMessageDialog(null, "Draw");
