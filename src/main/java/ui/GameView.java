@@ -66,6 +66,7 @@ public class GameView {
                     case SUCCESS -> {button.setText(text);}
                     case CELL_OCCUPIED -> {JOptionPane.showMessageDialog(null, "Cell is already occupied!!!");}
                     case DRAW -> {
+                        button.setText(text);
                         JOptionPane.showMessageDialog(null, "Draw");
                         restartGame();
                     }
