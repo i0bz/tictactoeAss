@@ -16,12 +16,16 @@ public class GameView {
 
     private final String[] players = new String[2];
 
+    private JLabel turnLabel;
+    private int index = 0;
+
 
     private final Titlebar titlebar;
     private final Board tictactoeGame = new Board();
 
 
-    GameView(Titlebar titlebar) {
+    GameView(Titlebar titlebar, JLabel turnLabel) {
+        this.turnLabel = turnLabel;
         this.titlebar = titlebar;
         initializeBtns();
         eventHandlers();
@@ -41,10 +45,10 @@ public class GameView {
     void getPlayerNames() {
         players[0] = JOptionPane.showInputDialog(null, "Enter Player 1:", "Input Names", JOptionPane.QUESTION_MESSAGE);
         players[1] = JOptionPane.showInputDialog(null, "Enter Player 2: ", "Input Names", JOptionPane.QUESTION_MESSAGE);
-
         for (int i = 0; i < 2; i++) if (players[i] == null || players[i].trim().isBlank()) players[i] = "Anonymous";
         titlebar.player1.setText(players[0]);
         titlebar.player2.setText(players[1]);
+        turnLabel.setText(players[0]);
     }
 
 
@@ -52,6 +56,9 @@ public class GameView {
         for (Button btn : buttons) {
             btn.addActionListener(e -> {
                 String text = "";
+                index = (index + 1) % 2;
+                turnLabel.setText(players[index]);
+
                 switch (tictactoeGame.currentPlayer) {
                     case ONE -> text = "X";
                     case TWO -> text = "O";

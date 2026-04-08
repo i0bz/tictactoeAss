@@ -1,10 +1,10 @@
 package ui;
 
-import com.formdev.flatlaf.ui.FlatEmptyBorder;
-import com.formdev.flatlaf.ui.FlatLineBorder;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 
@@ -13,7 +13,7 @@ public class Titlebar {
     JLabel player1 = new JLabel(" ");
     JLabel player2 = new JLabel(" ");
 
-    CompoundBorder border = new CompoundBorder(new FlatLineBorder(new Insets(0,0,0,0), Color.GRAY, 1, 10), new FlatEmptyBorder(5,5,5,5));
+    CompoundBorder border = new CompoundBorder(new LineBorder(Color.GRAY, 1, true), new EmptyBorder(5,5,5,5));
 
 
     Titlebar() {

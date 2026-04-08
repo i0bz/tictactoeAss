@@ -8,7 +8,10 @@ public class Window {
     public final Dimension size = new Dimension(500,500);
 
     private final Titlebar titlebar = new Titlebar();
-    private final GameView gameView = new GameView(titlebar);
+    private final JPanel turn = new JPanel();
+
+    private final JLabel turnLabel = new JLabel();
+    private final GameView gameView = new GameView(titlebar, turnLabel);
 
 
     public Window() {
@@ -18,8 +21,13 @@ public class Window {
         frame.setLocationRelativeTo(null);
         frame.setLayout(new BorderLayout());
 
+        turn.add(turnLabel);
+
         frame.add(titlebar.getPanel(), BorderLayout.NORTH);
         frame.add(gameView.getPanel(), BorderLayout.CENTER);
+        frame.add(turn, BorderLayout.SOUTH);
+
+
 
         frame.setVisible(true);
 
